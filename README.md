@@ -1,4 +1,4 @@
-# Inclass-Demos
+# In Class Demos
 
 All demos in class can be found here. Generally, there will be three versions of every file:
 1. The version made before class
