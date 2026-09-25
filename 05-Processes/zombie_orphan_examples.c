@@ -3,8 +3,8 @@
 #include "unistd.h"
 #include <stdlib.h>
 
-void child_lives_parent_terminates()
-{
+void child_lives_parent_terminates(){
+    // child is an orphan
     if (fork() == 0) {
         /* Child */
         printf("Running Child, PID = %d\n", getpid());
@@ -19,6 +19,7 @@ void child_lives_parent_terminates()
     }
 }
 void parent_wont_stop() {
+    // child is a zombie
     if (fork() == 0) {
         /* Child */
         printf("Terminating Child, PID = %d\n", getpid());
@@ -31,16 +32,24 @@ void parent_wont_stop() {
 }
 
 
-int main() {
-    int option = 1;
-    switch(option){
-        case 0:
-            parent_wont_stop();
-            break;
-        case 1:
-            child_lives_parent_terminates();
-            break;
-    }
-    return 0;
+int main(int argc, char *argv[]) {
+
+	if (argc != 2) {
+		printf("Usage: %s <0 for orphan example, 1 for zombie example\n", argv[0]);
+		return 1;
+	}
+
+	int num = atoi(argv[1]);
+
+	switch (num) {
+		case 0:
+			child_lives_parent_terminates();
+			break;
+		case 1:
+			parent_wont_stop();
+			break;
+	}
+
+	return 0;
 }
 

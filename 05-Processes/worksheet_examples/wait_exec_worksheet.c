@@ -4,19 +4,6 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-/*
- * Worksheet 2 - Wait and Exec
- *
- * Compile:
- *     gcc worksheet2_demo.c -o worksheet2_demo
- *
- * Run:
- *     ./worksheet2_demo 1
- *     ./worksheet2_demo 2
- *     ...
- *     ./worksheet2_demo 5
- */
-
 
 void ws_1(void) {
 	int value = 5;
