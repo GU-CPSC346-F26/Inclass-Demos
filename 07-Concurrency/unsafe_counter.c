@@ -11,8 +11,7 @@ void *mythread(void *arg)
 {
     char *letter = (char *)arg;
     int i; // stack (private per thread)
-    printf("%s: begin [addr of i: %p] [balance = %d at %p]\n",
-           letter, &i, balance, &balance);
+    printf("%s: begin [addr of i: %p] [balance = %d at %p]\n", letter, &i, balance, &balance);
     printf("%s: Thread id: %lu, Process id: %d\n", letter, (unsigned long) pthread_self(), getpid());
     
     for (i = 0; i < max; i++) {
