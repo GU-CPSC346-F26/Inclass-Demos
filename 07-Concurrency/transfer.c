@@ -19,8 +19,8 @@ typedef struct {
 
 void transfer_once(account_t *from, account_t *to, int amount, int tid) {
     printf("[T%d] acquiring %s\n", tid, from->name);
-    usleep(1000); // Simulate work while holding first lock
     pthread_mutex_lock(&from->lock);
+    usleep(1000); // Simulate work while holding first lock
     printf("[T%d] acquiring %s\n", tid, to->name);
     pthread_mutex_lock(&to->lock);
 
